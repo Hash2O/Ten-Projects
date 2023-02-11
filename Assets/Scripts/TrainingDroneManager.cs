@@ -51,6 +51,7 @@ public class TrainingDroneManager : MonoBehaviour
         if (isCloseEnough)
         {
             print("Starting Training Mode");
+            Transform axis = _player.GetComponentInChildren<Transform>();
             transform.LookAt(_player.transform.position);
             transform.RotateAround(_player.transform.position, Vector3.up, revolutionSpeed * Time.deltaTime);
         }

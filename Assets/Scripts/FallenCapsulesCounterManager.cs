@@ -21,7 +21,7 @@ public class FallenCapsulesCounterManager : MonoBehaviour
     {
         if(counter >= 10)
         {
-            crew.astraCrewComments();
+            //crew.astraCrewComments();
         }
     }
 

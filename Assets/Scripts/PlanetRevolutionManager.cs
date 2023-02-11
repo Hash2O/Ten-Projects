@@ -6,18 +6,19 @@ public class PlanetRevolutionManager : MonoBehaviour
 {
     //Assign a GameObject in the Inspector to rotate around
     [SerializeField] GameObject target;
-    //[SerializeField] GameObject plan;
+    [SerializeField] GameObject plan;
     [SerializeField] float revolutionSpeed;
 
     void Start()
     {
         target = GameObject.Find("Sun");
-        //plan = GameObject.Find("Plan");
+        plan = GameObject.Find("Plan");
     }
 
     void Update()
     {
+        Vector3 axis = plan.transform.up;
         // Spin the object around the target at revolutionSpeed/second.
-        transform.RotateAround(target.transform.position, Vector3.up, revolutionSpeed * Time.deltaTime);
+        transform.RotateAround(target.transform.position, axis, revolutionSpeed * Time.deltaTime);
     }
 }

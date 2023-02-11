@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7044d2f1bcd79e045828ad455e9f67f5, type: 2}
+  - {fileID: 2100000, guid: bc6abbfcada0a6342b611504c24944b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   _explosionParticle: {fileID: 7495509002977720521, guid: 71239d4729fcef844bbaaf39251c7131,
     type: 3}
   projectileRb: {fileID: 5989305007733139631}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: -7912550400994857424}
 --- !u!82 &-7912550400994857424
 AudioSource:
   m_ObjectHideFlags: 0
@@ -141,7 +141,7 @@ AudioSource:
   m_GameObject: {fileID: 4655365242725483921}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -2208962035522817209, guid: aeab8084b2529344aa76e69f54c970e9,
+  OutputAudioMixerGroup: {fileID: 4030908290407804923, guid: 84af537b593b7f346a0a26b7fa51fd3c,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
