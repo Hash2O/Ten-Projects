@@ -17,7 +17,7 @@ public class PlanetRevolutionManager : MonoBehaviour
 
     void Update()
     {
-        Vector3 axis = plan.transform.up;
+        Vector3 axis = target.transform.up;
         // Spin the object around the target at revolutionSpeed/second.
         transform.RotateAround(target.transform.position, axis, revolutionSpeed * Time.deltaTime);
     }
