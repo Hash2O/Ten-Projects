@@ -15,6 +15,8 @@ public class ArrowInteraction : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Transform tipPosition;
 
+    [SerializeField] AudioSource audioSource;
+
     private void Awake()
     {
         arrowRigidBody = GetComponent<Rigidbody>();
@@ -52,6 +54,7 @@ public class ArrowInteraction : MonoBehaviour
         Debug.Log("Arrow : StopArrow");
         inAir = false;
         SetPhysics(false);
+        audioSource.Play();
     }
 
     private void SetPhysics(bool usePhysics)

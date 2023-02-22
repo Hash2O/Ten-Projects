@@ -13,7 +13,8 @@ public class PistolManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _maxBullet = _ammo;
+        //_maxBullet = _ammo;
+        _maxBullet = 20;
         audioSource = GetComponent<AudioSource>();
     }
 

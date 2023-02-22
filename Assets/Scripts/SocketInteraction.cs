@@ -61,7 +61,7 @@ public class SocketInteraction : XRSocketInteractor
     {
         if (currentArrow && bowInteraction.BowHeld)
         {
-            Debug.Log("Socket : StopArrow");
+            Debug.Log("Socket : ReleaseArrow");
             ForceDetach();
             ReleaseArrowFromSocket();
             ClearVariables();

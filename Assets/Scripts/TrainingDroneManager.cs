@@ -10,6 +10,12 @@ public class TrainingDroneManager : MonoBehaviour
     [SerializeField] float revolutionSpeed;
     [SerializeField] GameObject _trainingProjectile;
 
+    [SerializeField] AudioSource audioSource;
+
+    private float chrono;
+    private float maxChrono = 5.0f;
+    private bool disabledChrono = false;
+
     [SerializeField] private bool isCloseEnough;
     // Start is called before the first frame update
     void Start()
@@ -23,8 +29,13 @@ public class TrainingDroneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float time = Time.deltaTime;
-        //print(time);
+        chrono += Time.deltaTime;
+        print(chrono);
+        if (chrono >= maxChrono && !disabledChrono && isCloseEnough)
+        {
+            fireMode();
+            chrono = 0;
+        }
     }
 
     public void closingDistance()
@@ -54,15 +65,35 @@ public class TrainingDroneManager : MonoBehaviour
             Transform axis = _player.GetComponentInChildren<Transform>();
             transform.LookAt(_player.transform.position);
             transform.RotateAround(_player.transform.position, Vector3.up, revolutionSpeed * Time.deltaTime);
+            if (transform.position.y < 2f)
+            {
+                transform.position = new Vector3(transform.position.x, 2.5f, transform.position.z);
+            }
         }
     }
 
     public void fireMode()
     {
-        print("Beginning fire at the target");
-        Instantiate(_trainingProjectile, transform.position, transform.rotation);
+        print("Fire at the target");
+
+        audioSource.Play();
+
         Rigidbody _trainingProjectileRb = _trainingProjectile.GetComponent<Rigidbody>();
+
         Vector3 direction = transform.position - _player.transform.position;
-        _trainingProjectileRb.AddForce(direction * 100f, ForceMode.Impulse);
+
+        Instantiate(_trainingProjectile, transform.position, transform.rotation);
+
+        _trainingProjectileRb.AddForce(direction * 50000f, ForceMode.Impulse);
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag == "MetaSaber")
+        {
+            Debug.Log("Drone hit");
+        }
+        
+    }
+
 }

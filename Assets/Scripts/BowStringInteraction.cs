@@ -16,6 +16,9 @@ public class BowStringInteraction : XRBaseInteractable
     private Vector3 pullDirection;
     private Vector3 targetDirection;
 
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] List<AudioClip> clips;
+
     public float PullAmount { get; private set; } = 0.0f;
     public Vector3 StringStartPoint { get => stringStartPoint.localPosition; }
     public Vector3 StringEndPoint { get => stringEndPoint.localPosition; }
@@ -53,6 +56,7 @@ public class BowStringInteraction : XRBaseInteractable
     private float CalculatePull(Vector3 pullPosition)
     {
         Debug.Log("CalculatePull");
+        //audioSource.PlayOneShot(clips[0]);
         pullDirection = pullPosition - stringStartPoint.position;
         targetDirection = stringEndPoint.position - stringStartPoint.position;
         float maxLength = targetDirection.magnitude;
