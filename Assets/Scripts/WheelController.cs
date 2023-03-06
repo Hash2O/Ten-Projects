@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using TMPro;
 
 //Version chatGPT
 
@@ -23,10 +24,24 @@ public class WheelController : MonoBehaviour
     private XRGrabInteractable interactable;
     private Quaternion originalRotation;
 
+    [SerializeField] TextMeshProUGUI affichage;
+
     void Start()
     {
         interactable = GetComponent<XRGrabInteractable>();
         originalRotation = transform.rotation;
+
+        InputDevice targetDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+
+        var inputDevices = new List<InputDevice>();
+        InputDevices.GetDevices(inputDevices);
+
+        foreach (var device in inputDevices)
+        {
+            Debug.Log(string.Format("Device found with name '{0}' and role '{1}'", device.name, device.characteristics.ToString()));
+        }
+
+        affichage.SetText("Target Device : " + targetDevice.isValid);
     }
 
     void Update()

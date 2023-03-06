@@ -13,6 +13,7 @@ public class BlasterManager : MonoBehaviour
     public float range = 10000f;
     public LayerMask targetMask;
     public GameObject hitMarkerPrefab; // Préfabriqué de la marque
+    public GameObject laserBlast;
 
     // Start is called before the first frame update
     void Start()
@@ -67,12 +68,17 @@ public class BlasterManager : MonoBehaviour
             print("Distance : " + hit.distance);
             print("Objet touché : " + hit.collider.name);
 
+            //Put a mark where the laser hits
             GameObject hitMarker = Instantiate(hitMarkerPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+            //Mark's lifetime
             Destroy(hitMarker, 5f);
 
-            //En cas de hit, on fait sauter l'objet touché vers le haut
-            Rigidbody targetRb = hit.rigidbody;
-            targetRb.AddForce(transform.forward * - 1000f);
+            //Instancier un tir de blaster
+            Instantiate(laserBlast, firingPoint.transform.position, firingPoint.transform.rotation);
+
+            //Pour ajouter de l'impact au tir de laser
+            //Rigidbody targetRb = hit.rigidbody;
+            //targetRb.AddRelativeForce(transform.forward * - 1000f, ForceMode.Impulse);
 
         }
         else

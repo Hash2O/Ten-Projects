@@ -370,6 +370,7 @@ MonoBehaviour:
     m_Bits: 1
   hitMarkerPrefab: {fileID: 7286985459856491631, guid: b04d28f8dd580c84782dce0b5c163481,
     type: 3}
+  laserBlast: {fileID: 0}
 --- !u!1 &4013775188213545241
 GameObject:
   m_ObjectHideFlags: 0

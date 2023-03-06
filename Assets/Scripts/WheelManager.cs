@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using TMPro;
 
 public class WheelManager : MonoBehaviour
 {
@@ -26,10 +28,24 @@ public class WheelManager : MonoBehaviour
     private XRGrabInteractable grabInteractable;
     private Quaternion originalRotation;
 
+    [SerializeField] TextMeshProUGUI affichage;
+
     private void Start()
     {
         grabInteractable = GetComponent<XRGrabInteractable>();
         originalRotation = transform.rotation;
+
+        InputDevice targetDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+
+        var inputDevices = new List<InputDevice>();
+        InputDevices.GetDevices(inputDevices);
+
+        foreach (var device in inputDevices)
+        {
+            Debug.Log(string.Format("Device found with name '{0}' and role '{1}'", device.name, device.characteristics.ToString()));
+        }
+
+        affichage.SetText("Target Device : " + targetDevice.isValid);
     }
 
     private void Update()

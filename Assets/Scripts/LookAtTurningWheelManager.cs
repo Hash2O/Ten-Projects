@@ -18,10 +18,8 @@ public class LookAtTurningWheelManager : MonoBehaviour
     void Start()
     {
         wheel = GameObject.Find("Wheel");
-        affichage.SetText("Infos du trigger");
 
-        /*
-        targetDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        InputDevice targetDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
 
         var inputDevices = new List<InputDevice>();
         InputDevices.GetDevices(inputDevices);
@@ -32,7 +30,7 @@ public class LookAtTurningWheelManager : MonoBehaviour
         }
 
         affichage.SetText("Target Device : " + targetDevice.isValid);
-        */
+        
     }
 
     // Update is called once per frame

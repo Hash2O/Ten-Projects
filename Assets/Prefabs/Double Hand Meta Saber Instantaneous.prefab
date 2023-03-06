@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1723707937552510371}
   - component: {fileID: 3322010977684507753}
   m_Layer: 6
-  m_Name: Capsule (1)
-  m_TagString: Untagged
+  m_Name: Lame Principale
+  m_TagString: MetaSaber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,8 +228,8 @@ GameObject:
   - component: {fileID: 9195328601035060481}
   - component: {fileID: 423774529182963397}
   m_Layer: 6
-  m_Name: Capsule
-  m_TagString: Untagged
+  m_Name: Lame Secondaire
+  m_TagString: MetaSaber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

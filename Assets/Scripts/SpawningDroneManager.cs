@@ -17,7 +17,19 @@ public class SpawningDroneManager : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        if(transform.position.z < 10)
+        if (transform.position.y < 2f)
+        {
+            transform.position = new Vector3(transform.position.x, 2f, transform.position.z);
+        }
+        if (transform.position.z < 10)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "MetaSaber")
         {
             gameObject.SetActive(false);
         }

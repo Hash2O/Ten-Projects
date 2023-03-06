@@ -20,8 +20,14 @@ public class ScaleController : MonoBehaviour
     {
         if (grabInteractable.isSelected)
         {
-            float distance = Vector2.Distance(grabInteractable.selectingInteractor.GetComponent<XRController>().inputDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 position) ? position : Vector2.zero, Vector2.zero);
-            float scaleFactor = 1.0f + distance * scaleSpeed;
+            //Nécessite InputDevice, que je n'ai toujours pas pu faire marcher
+            //float distance = Vector2.Distance(grabInteractable.selectingInteractor.GetComponent<XRController>().inputDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 position) ? position : Vector2.zero, Vector2.zero);
+
+            //Solution de repli : utiliser Input.GetAxis("Horizontal"), récupérer la valeur et en faire la base pour faire grossir ou rétrécir l'objet tenu en main
+            //Pour ne pas trop modifier le code, on appellera distance la valeur ainsi calculée
+
+            float distance = Input.GetAxis("Horizontal");
+            float scaleFactor = 10.0f + distance * scaleSpeed;
             transform.localScale = initialScale * scaleFactor;
         }
         else
