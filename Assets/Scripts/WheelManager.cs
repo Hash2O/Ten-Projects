@@ -25,6 +25,15 @@ public class WheelManager : MonoBehaviour
 
     //Version chatGPT
 
+    [SerializeField] GameObject leftHand;
+    [SerializeField] GameObject rightHand;
+
+    private Quaternion leftHandRotation;
+    private Quaternion rightHandRotation;
+
+    private Vector3 leftHandPosition;
+    private Vector3 rightHandPosition;
+
     private XRGrabInteractable grabInteractable;
     private Quaternion originalRotation;
 
@@ -46,6 +55,7 @@ public class WheelManager : MonoBehaviour
         }
 
         affichage.SetText("Target Device : " + targetDevice.isValid);
+
     }
 
     private void Update()
@@ -59,5 +69,16 @@ public class WheelManager : MonoBehaviour
         {
             transform.rotation = originalRotation;
         }
+
+        //Gestion de la position et de l'orientation (rotation) des mains dans la scene.
+
+        leftHandRotation = leftHand.transform.rotation;
+        rightHandRotation = rightHand.transform.rotation;
+
+        leftHandPosition = leftHand.transform.position;
+        rightHandPosition = rightHand.transform.position;
+
+        Debug.Log("Left Hand Position : " + leftHandPosition);
+        Debug.Log("Right Hand Position : " + rightHandPosition);
     }
 }

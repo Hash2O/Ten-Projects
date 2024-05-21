@@ -7,10 +7,14 @@ using TMPro;
 public class LookAtTurningWheelManager : MonoBehaviour
 {
 
-    [SerializeField] GameObject handController;
+    [SerializeField] GameObject rightHand;
     [SerializeField] GameObject wheel;
     [SerializeField] GameObject axis;
     [SerializeField] TextMeshProUGUI affichage;
+
+    private Quaternion rightHandRotation;
+
+    private Vector3 rightHandPosition;
 
     public float rotationSpeed;
 
@@ -18,6 +22,7 @@ public class LookAtTurningWheelManager : MonoBehaviour
     void Start()
     {
         wheel = GameObject.Find("Wheel");
+        rightHand = GameObject.Find("Right Hand Model");
 
         InputDevice targetDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
 
@@ -88,7 +93,13 @@ public class LookAtTurningWheelManager : MonoBehaviour
         transform.Rotate(0, - rotation * rotationSpeed, 0);
         */
 
-        rotationSpeed = Vector3.Distance(transform.position, handController.transform.position);
+        rotationSpeed = Vector3.Distance(transform.position, rightHandPosition);
+
+        rightHandRotation = rightHand.transform.rotation;
+
+        rightHandPosition = rightHand.transform.position;
+
+        Debug.Log("Right Hand Position : " + rightHandPosition);
 
 
     }//fin Update
@@ -97,8 +108,8 @@ public class LookAtTurningWheelManager : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        axis.transform.LookAt(handController.transform);
-        print("Contact made");
+        axis.transform.LookAt(rightHand.transform);
+        //print("Contact made");
         affichage.SetText("OnTriggerEnter : Contact made");
 
     }
@@ -106,18 +117,20 @@ public class LookAtTurningWheelManager : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         affichage.SetText("OnTriggerStay : Contact established");
-        /*
-        float rotation = handController.transform.position.y * rotationSpeed;
-        transform.Rotate(0, rotation, 0);
-        */
-        axis.transform.LookAt(handController.transform);
-        //transform.Rotate(0, axis.transform.rotation.y, 0);
-        //transform.LookAt(handController.transform);
+        
+        //La roue tourne dès que le contact est établi (vitess de rotation définie plus haut, dans Start();
+        //float rotation = rightHandPosition.y * rotationSpeed;
+        //transform.Rotate(0, rotation, 0);
+        
+        axis.transform.LookAt(rightHand.transform);
+        transform.LookAt(rightHand.transform);
+        transform.Rotate(0, axis.transform.rotation.y, 0);
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        print("Contact lost");
+        //print("Contact lost");
         affichage.SetText("OnTriggerExit : Contact lost");
     }
     

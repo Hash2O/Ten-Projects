@@ -5,30 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Projet 0 - Start Level.unity
-    guid: 2af4ecf6d96780542a277f87b4fdcb3d
-  - enabled: 1
-    path: Assets/Scenes/Projet 1 - Chamboule Tout.unity
-    guid: 1c554ff6c8f8b2a45bb731cb60065b1e
-  - enabled: 1
-    path: Assets/Scenes/Projet 2 - Firearm training.unity
-    guid: e3a6735be655dcf43be94afdd5461110
-  - enabled: 1
-    path: Assets/Scenes/Projet 3 - Coffre Fort.unity
-    guid: 4368802ebd5af9c448522578ca9ab780
-  - enabled: 1
-    path: Assets/Scenes/Projet 4 - Solar System.unity
-    guid: f1787fb5c9f3aef429ecddc489bfd133
-  - enabled: 1
-    path: Assets/Scenes/Projet 5 - MetaSaber Training.unity
-    guid: 07630a6646a76894284f8874500f228f
-  - enabled: 1
-    path: Assets/Scenes/Projet 6 - Darts Practise.unity
-    guid: 4497f09ad7d0fdf4787826c5772167ed
+    path: Assets/Scenes/Projet 7 - Arrow Practise.unity
+    guid: 531e0abed0808354f97a1edd2b08641f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ac166ee769a74ee4f8278c56bccc027a,
       type: 2}
